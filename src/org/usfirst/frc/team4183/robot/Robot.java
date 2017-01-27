@@ -35,7 +35,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		
+	    // subsystem MUST exist before new-ing OI! 
+	    // ('cause OI news the Command, and Command.requires() 
+	    // refers to subsystem instance) 
+	    prototypeSubsystem = new PrototypeSubsystem(); 
 		oi = new OI();
+		
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -104,8 +110,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		SmartDashboard.putNumber("Motor Velocity", 0);
 		SmartDashboard.putNumber("Conveyer Speed", 0);
-		prototypeSubsystem = new PrototypeSubsystem();
-		oi.logButton.whenPressed(new LoggerCommand());
 	}
 
 	/**
