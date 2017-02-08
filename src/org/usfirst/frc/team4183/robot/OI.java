@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4183.robot;
 
+import org.usfirst.frc.team4183.robot.commands.LoggerCommand;
 import org.usfirst.frc.team4183.utils.JoystickAxisButton;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
@@ -12,9 +13,15 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	public Joystick protoController = new Joystick(0);
-	
+	public Joystick protoController = new Joystick(0);	
 	public Button logButton = new JoystickButton(protoController, 2);//X Button Starts it
+
+	public OI() {
+		// Do the button->command binding in (singleton) OI constructor,
+		// only want to do it once!
+		logButton.whenPressed( new LoggerCommand());
+	}
+	
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.

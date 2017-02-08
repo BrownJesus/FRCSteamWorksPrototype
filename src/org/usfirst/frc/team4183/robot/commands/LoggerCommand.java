@@ -26,7 +26,9 @@ public class LoggerCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	// We're only interested in initialize(), 
+    	// so might as well finish immediately
+        return true;
     }
 
     // Called once after isFinished returns true
